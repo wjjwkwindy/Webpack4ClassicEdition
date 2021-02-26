@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    background-color: #eee;
+}
+.box{
+    width: 200px;
+    height: 200px;
+    border-radius: 3px;
+    background-color: rgb(7, 214, 17);
+}
+.box--big{
+    width: 300px;
+    height: 300px;
+    border-radius: 5px;
+    background-color: rgb(20, 111, 214);
+}
+
+ /* 下面这个样式没使用过，不会被打包 */
+.box--small{
+    width: 100px;
+    height: 100px;
+    border-radius: 2px;
+    background-color: rgb(197, 211, 9);
+}
