@@ -56,6 +56,22 @@ module.exports = {
               limit: 1000, //把小于 1kb 的文件转成 Base64 的格式。url-loader 提供了一个 limit 参数，小于 limit 字节的文件会被转为 base64，大于 limit 的使用 file-loader 进行处理，单独打包。url-loader 依赖 file-loader，url-loader 可以看作是增强版的 file-loader。
             },
           },
+          {
+            // 图片压缩
+            loader: 'image-webpack-loader',
+            options: {
+              // 压缩 jpg/jpeg 图片
+              mozjpeg: {
+                progressive: true,
+                quality: 65, // 压缩率
+              },
+              // 压缩 png 图片
+              pngquant: {
+                quality: [0.65, 0.9], // Type: Array<min: number, max: number> 最小和最大值为 0（最差）到 1（最好）
+                speed: 4,
+              },
+            },
+          },
         ],
       },
     ],
