@@ -1,8 +1,8 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将css单独打包
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin'); // 打包输出 HTML
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // 将 css 单独打包
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); // css 压缩
 
 // CSS Tree Shaking
 // PurifyCSS将帮助我们进行 CSS Tree Shaking 操作。为了能准确指明要进行 Tree Shaking 的 CSS 文件，还有 glob-all （另一个第三方库）。
@@ -78,8 +78,8 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin(),
+    // 打包输出 HTML
     new HtmlWebpackPlugin({
-      // 打包输出HTML
       title: '自动生成 HTML',
       minify: {
         // 压缩 HTML 文件
@@ -91,10 +91,12 @@ module.exports = {
       template: 'index.html', // 根据此模版生成 HTML 文件
       chunk: ['index'],
     }),
+    // 将css单独打包
     new MiniCssExtractPlugin({
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+    // css 压缩
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
       cssProcessor: require('cssnano'), //用于优化\最小化 CSS 的 CSS 处理器，默认为 cssnano
