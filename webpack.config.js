@@ -10,6 +10,11 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin'); /
 const PurifyCSS = require('purifycss-webpack');
 const glob = require('glob-all');
 
+// 雪碧图配置，不足处：需要手动设置每个图片的宽高
+let spritesConfig = {
+  spritePath: './dist/images',
+};
+
 module.exports = {
   entry: {
     main: './src/index.js',
@@ -37,7 +42,8 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [require('autoprefixer')],
+              ident: 'postcss', // 雪碧图配置
+              plugins: [require('autoprefixer'), require('postcss-sprites')(spritesConfig)], // 雪碧图配置
             },
           },
           'sass-loader',

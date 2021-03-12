@@ -46,5 +46,7 @@ html{
 }
 
 .box_img .ani3 {
+    width: 11px;
+    height: 13px;
     background: url(../assets/imgs/3.png) no-repeat;
 }
