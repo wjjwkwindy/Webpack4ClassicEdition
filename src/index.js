@@ -14,7 +14,7 @@ document.addEventListener('click', function () {
   });
 });
 
-// CSS Tree Shaking
+// CSS Tree Shaking：在页面上添加一个 .box 元素
 var app = document.querySelector('#app');
 var div  = document.createElement('div');
 div.className = 'box';
