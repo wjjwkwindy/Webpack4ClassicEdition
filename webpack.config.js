@@ -43,6 +43,21 @@ module.exports = {
           'sass-loader',
         ],
       },
+      // 图片处理
+      {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              esModule: false, // 打包后的图片地址变成了 [object Module]，原因是 5.0.0 默认将 esModule 设置为了 true，所以我们只要显式的将它再改为 false 就好了。url-loader 是对 file-loader 的封装，目的是可以使用 limit 来判断是否把图片编译成 base64 格式，最后还是会调用 file-loader，所以设置 esModule 同样有效。
+              name: '[name]-[hash:5].min.[ext]',
+              outputPath: 'images/', // 输出到 images 文件夹
+              limit: 20000, //把小于 20kb 的文件转成 Base64 的格式
+            },
+          },
+        ],
+      },
     ],
   },
   plugins: [

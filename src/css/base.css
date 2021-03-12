@@ -25,3 +25,26 @@ html{
     border-radius: 2px;
     background-color: rgb(197, 211, 9);
 }
+
+/* 图片处理 */
+.box_img{
+    width: 400px;
+    height: 400px;
+}
+
+.box_img div{
+    width: 100px;
+    height: 100px;
+}
+
+.box_img .ani1 {
+    background: url(./../assets/imgs/1.png) no-repeat;
+}
+
+.box_img .ani2 {
+    background: url(./../assets/imgs/2.png) no-repeat;
+}
+
+.box_img .ani3 {
+    background: url(../assets/imgs/3.png) no-repeat;
+}
